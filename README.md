@@ -1,12 +1,12 @@
 # Tensor Image Domain Gridding
 
-Image Domain Gridding (IDG) is a fast method for convolutional resampling (gridding/degridding) of radio astronomical data (visibilities). It's highly parallel in natures making it suitable candidate for hardware accellerators like GPUs and FPGAs.
+[Image Domain Gridding (IDG)](https://idg.readthedocs.io/en/latest/) is a fast method for convolutional resampling (gridding/degridding) of radio astronomical data (visibilities). It's highly parallel in natures making it suitable candidate for hardware accellerators like GPUs and FPGAs.
 
-This is a GPU accelerated tensor implementation using JAX of [Image Domain Gridding](https://idg.readthedocs.io/) from ASTRON. This notebook contains the example implementation of IDG and imaging. This starts from reading the measurement set, performing the gridding, upto creating a dirty image (currently in lmn, not in RA/DEC yet).
+This is a GPU accelerated tensor implementation using JAX of Image Domain Gridding. This notebook contains the example implementation of IDG and imaging. This starts from reading the measurement set, performing the gridding, upto creating a dirty image (currently in lmn, not in RA/DEC yet).
 
-## What is a "Tensor Implementation"
+## Source
 
-https://idg.readthedocs.io/en/latest/
+Please have a look at the [notebook](./Tensor_Clean.ipynb)
 
 ## Modelling Computation as tensors
 
@@ -60,10 +60,6 @@ pixels = jnp.einsum("tcz,tcp->zp",visibilities,phasor) # Grid with visibilty
 
 ```
 
-## Source
-
-Please have a look at the [notebook](./Tensor_Clean.ipynb)
-
 ## TODO
 
-1. Flagged rows (due to RFI, instrument issues) are not removed in this example notebook during gridding. This will affect the result when using a measurement set with flagged roms
+1. Flagged rows (due to RFI, instrument issues) are not removed in this example notebook during gridding. This will affect the result when using a measurement set with flagged rows
